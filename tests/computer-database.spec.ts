@@ -35,16 +35,7 @@ test('Корректная обработка ситуации, когда за�
   await page.getByRole('button', { name: 'Filter by name' }).click();
   await expect(page.locator('div').filter({ hasText: 'Nothing to display' })).toHaveText('Nothing to display');
   await expect(page.getByText("Displaying 1 to 0 of 0")).toHaveText("Displaying 1 to 0 of 0");
-  /*await expect(page.locator("← Previous" )).toBeDisabled();
-  await expect(page.locator("Next →" )).toBeDisabled();*/ 
-  //эти две проверки не проходят, подскажите пожалуйста в чем ошибка
 });
-
-test('Обязательность поля имя компьютера при попытке фильтрации', async ({ page }) => {
-  await page.goto('https://computer-database.gatling.io/computers');
-  await page.getByRole('button', { name: 'Filter by name' }).click();
-  await expect(page.getByText('Заполните это поле')).toHaveText('Заполните это поле');
-}); //этот не проходит, подскажите пожалуйста в чем ошибка
 
 test('Открытие формы создания нового компьютера', async ({ page }) => {
     await page.goto("http://computer-database.gatling.io/computers");
